@@ -1,4 +1,5 @@
 library(Biostrings)
+library(dplyr)
 motif.list<-motif.filtered[,c(1,5,8)] %>%unique
 
 get_UP_degenerate_bases<-function(s){
@@ -136,7 +137,7 @@ for(s in (MTase.blast.filtered$RecSeq %>% unique %>% na.omit) ){
 
 motif.list$partial[which(!is.na(motif.list$partial)&!is.na(motif.list$exist))]<-NA
 
-#motif去冗余----
+#motif dereplication----
 motif.list$same<-NA
 for(s in (motif.list$motif_id %>% unique %>% na.omit) ){
   #motif.list[grep(get_degenerate_bases(s),motif.list$motif_id)]
